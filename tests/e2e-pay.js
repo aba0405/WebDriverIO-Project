@@ -1,13 +1,20 @@
+const { default: App } = require("../page-objects/App")
+const { default: Navbar } = require("../page-objects/components/Navbar")
+const { default: LoginPage } = require("../page-objects/pages/LoginPage")
+
 describe('E2E Tests - Pay', () => {
 	it('Should log into application', () => {
-		browser.url('http://zero.webappsecurity.com/index.html')
-		$('#signin_button').waitForExist()
-		$('#signin_button').click()
-		$('#login_form').waitForExist()
-		$('#user_login').setValue('username')
-		$('#user_password').setValue('password')
-		$('input[type="submit"]').click()
-		$('.nav-tabs').waitForExist()
+		// browser.url('http://zero.webappsecurity.com/index.html')
+		// $('#signin_button').waitForExist()
+		// $('#signin_button').click()
+		// $('#login_form').waitForExist()
+		// $('#user_login').setValue('username')
+		// $('#user_password').setValue('password')
+		// $('input[type="submit"]').click()
+		// $('.nav-tabs').waitForExist()
+		App.openLoginPage()
+		LoginPage.LoginPage('username', 'password')
+		Navbar.insideNavbarIsVisible()
 	})
  
 	it('Should make payment', () => {
